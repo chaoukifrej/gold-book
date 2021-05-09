@@ -1,0 +1,35 @@
+<%- include('header'); -%>
+  <form action="/" method="post" class="ui form">
+    <div class="field">
+      <label for="message">message</label>
+      <textarea name="message" id="message"></textarea>
+      <button type="submit" class="ui animated blue labeled submit icon button">
+        <i class="icon edit"></i>
+        <div class="visible content">Envoyer</div>
+        <div class="hidden content">
+          <i class="right arrow icon"></i>
+        </div>
+      </button>
+    </div>
+  </form>
+  <div class="ui comments">
+    <h3 class="ui dividing header">Commentaires</h3>
+    <% for (message of messages) { %>
+      <div class="comment">
+        <div class="content">
+          <div class="metadata">
+            <div class="date">
+              <%= message.created_at.toLocaleDateString() %> -
+                <%= message.created_at.toLocaleTimeString('fr-FR', { hour: '2-digit' , minute:'2-digit' }) %>
+            </div>
+          </div>
+          <div class="test">
+            <%= message.content %>
+          </div>
+        </div>
+      </div>
+      <% }%>
+
+  </div>
+
+  <%- include('footer'); -%>
